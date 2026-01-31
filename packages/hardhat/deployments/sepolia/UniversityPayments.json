@@ -1,0 +1,827 @@
+{
+  "address": "0x463620e2E24c3900FEF49111BC89A2A82650127a",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableInvalidOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "OwnableUnauthorizedAccount",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "FundsWithdrawn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "serviceId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "PaymentMade",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "RefundIssued",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "serviceId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        }
+      ],
+      "name": "ServiceCreated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "serviceId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "active",
+          "type": "bool"
+        }
+      ],
+      "name": "ServiceUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        }
+      ],
+      "name": "createService",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getContractBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPaymentCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getPayments",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "student",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "serviceId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct UniversityPayments.Payment[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getServiceCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getServices",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "string",
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "internalType": "uint256",
+              "name": "price",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "active",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct UniversityPayments.Service[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_student",
+          "type": "address"
+        }
+      ],
+      "name": "getStudentPayments",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "student",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "serviceId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "timestamp",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct UniversityPayments.Payment[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_serviceId",
+          "type": "uint256"
+        }
+      ],
+      "name": "payForService",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "payments",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "serviceId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "services",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "active",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "studentPayments",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "student",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "serviceId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "timestamp",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_serviceId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "_name",
+          "type": "string"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_price",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bool",
+          "name": "_active",
+          "type": "bool"
+        }
+      ],
+      "name": "updateService",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "withdrawFunds",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0xb1816f276ad7ece14073294a52399bdaf8eec56a56a7bd477063d45f98e487ec",
+  "receipt": {
+    "to": null,
+    "from": "0x8a42b1181fcEd4e6090bDbba8a6a4BE9F80b3B8E",
+    "contractAddress": "0x463620e2E24c3900FEF49111BC89A2A82650127a",
+    "transactionIndex": 47,
+    "gasUsed": "1219101",
+    "logsBloom": "0x00000000000000000000000000000000020000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000100000000000000000000020000000000000000000800000000000000000000000000000000400000000004000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000400000000000000000000000000000000000000000000000000020000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x7406a0c4809eaf8fa78dabaddcdeea21a0606676e409faaadacae670f9eed3ed",
+    "transactionHash": "0xb1816f276ad7ece14073294a52399bdaf8eec56a56a7bd477063d45f98e487ec",
+    "logs": [
+      {
+        "transactionIndex": 47,
+        "blockNumber": 10160656,
+        "transactionHash": "0xb1816f276ad7ece14073294a52399bdaf8eec56a56a7bd477063d45f98e487ec",
+        "address": "0x463620e2E24c3900FEF49111BC89A2A82650127a",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x0000000000000000000000008a42b1181fced4e6090bdbba8a6a4be9f80b3b8e"
+        ],
+        "data": "0x",
+        "logIndex": 99,
+        "blockHash": "0x7406a0c4809eaf8fa78dabaddcdeea21a0606676e409faaadacae670f9eed3ed"
+      }
+    ],
+    "blockNumber": 10160656,
+    "cumulativeGasUsed": "8053723",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "ecc6c7c09306dfc1d5eafb5e041c252c",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.30+commit.73712a01\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"OwnableInvalidOwner\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"OwnableUnauthorizedAccount\",\"type\":\"error\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"FundsWithdrawn\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"student\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"serviceId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"PaymentMade\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"student\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"RefundIssued\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"serviceId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"ServiceCreated\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"uint256\",\"name\":\"serviceId\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"}],\"name\":\"ServiceUpdated\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"}],\"name\":\"createService\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getContractBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPaymentCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPayments\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"student\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"serviceId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"internalType\":\"struct UniversityPayments.Payment[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getServiceCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getServices\",\"outputs\":[{\"components\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"}],\"internalType\":\"struct UniversityPayments.Service[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_student\",\"type\":\"address\"}],\"name\":\"getStudentPayments\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"student\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"serviceId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"internalType\":\"struct UniversityPayments.Payment[]\",\"name\":\"\",\"type\":\"tuple[]\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_serviceId\",\"type\":\"uint256\"}],\"name\":\"payForService\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"payments\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"student\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"serviceId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"services\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"active\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"studentPayments\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"student\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"serviceId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_serviceId\",\"type\":\"uint256\"},{\"internalType\":\"string\",\"name\":\"_name\",\"type\":\"string\"},{\"internalType\":\"uint256\",\"name\":\"_price\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"_active\",\"type\":\"bool\"}],\"name\":\"updateService\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"withdrawFunds\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Implements payment processing with automatic refunds for overpayments\",\"errors\":{\"OwnableInvalidOwner(address)\":[{\"details\":\"The owner is not a valid owner account. (eg. `address(0)`)\"}],\"OwnableUnauthorizedAccount(address)\":[{\"details\":\"The caller account is not authorized to perform an operation.\"}]},\"kind\":\"dev\",\"methods\":{\"createService(string,uint256)\":{\"details\":\"Only callable by contract owner\",\"params\":{\"_name\":\"The name of the service\",\"_price\":\"The price in wei for the service\"}},\"getContractBalance()\":{\"returns\":{\"_0\":\"The balance in wei\"}},\"getPaymentCount()\":{\"returns\":{\"_0\":\"The count of payments\"}},\"getPayments()\":{\"returns\":{\"_0\":\"Array of all payments\"}},\"getServiceCount()\":{\"returns\":{\"_0\":\"The count of services\"}},\"getServices()\":{\"returns\":{\"_0\":\"Array of all services\"}},\"getStudentPayments(address)\":{\"params\":{\"_student\":\"The address of the student\"},\"returns\":{\"_0\":\"Array of payments made by the student\"}},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"payForService(uint256)\":{\"details\":\"Automatically refunds any overpayment to the student\",\"params\":{\"_serviceId\":\"The ID of the service being paid for\"}},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"},\"updateService(uint256,string,uint256,bool)\":{\"details\":\"Only callable by contract owner\",\"params\":{\"_active\":\"Whether the service should be active\",\"_name\":\"The new name for the service\",\"_price\":\"The new price in wei for the service\",\"_serviceId\":\"The ID of the service to update\"}},\"withdrawFunds()\":{\"details\":\"Only callable by contract owner\"}},\"title\":\"UniversityPayments\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"constructor\":{\"notice\":\"Initializes the contract with the deployer as owner\"},\"createService(string,uint256)\":{\"notice\":\"Creates a new service\"},\"getContractBalance()\":{\"notice\":\"Returns the current contract balance\"},\"getPaymentCount()\":{\"notice\":\"Returns the total number of payments\"},\"getPayments()\":{\"notice\":\"Returns all payments made\"},\"getServiceCount()\":{\"notice\":\"Returns the total number of services\"},\"getServices()\":{\"notice\":\"Returns all available services\"},\"getStudentPayments(address)\":{\"notice\":\"Returns all payments made by a specific student\"},\"payForService(uint256)\":{\"notice\":\"Processes a payment for a service\"},\"updateService(uint256,string,uint256,bool)\":{\"notice\":\"Updates an existing service\"},\"withdrawFunds()\":{\"notice\":\"Withdraws all contract funds to the owner\"}},\"notice\":\"A transparent and decentralized payment system for university services\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/UniversityPayments.sol\":\"UniversityPayments\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/access/Ownable.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.0) (access/Ownable.sol)\\n\\npragma solidity ^0.8.20;\\n\\nimport {Context} from \\\"../utils/Context.sol\\\";\\n\\n/**\\n * @dev Contract module which provides a basic access control mechanism, where\\n * there is an account (an owner) that can be granted exclusive access to\\n * specific functions.\\n *\\n * The initial owner is set to the address provided by the deployer. This can\\n * later be changed with {transferOwnership}.\\n *\\n * This module is used through inheritance. It will make available the modifier\\n * `onlyOwner`, which can be applied to your functions to restrict their use to\\n * the owner.\\n */\\nabstract contract Ownable is Context {\\n    address private _owner;\\n\\n    /**\\n     * @dev The caller account is not authorized to perform an operation.\\n     */\\n    error OwnableUnauthorizedAccount(address account);\\n\\n    /**\\n     * @dev The owner is not a valid owner account. (eg. `address(0)`)\\n     */\\n    error OwnableInvalidOwner(address owner);\\n\\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\\n\\n    /**\\n     * @dev Initializes the contract setting the address provided by the deployer as the initial owner.\\n     */\\n    constructor(address initialOwner) {\\n        if (initialOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(initialOwner);\\n    }\\n\\n    /**\\n     * @dev Throws if called by any account other than the owner.\\n     */\\n    modifier onlyOwner() {\\n        _checkOwner();\\n        _;\\n    }\\n\\n    /**\\n     * @dev Returns the address of the current owner.\\n     */\\n    function owner() public view virtual returns (address) {\\n        return _owner;\\n    }\\n\\n    /**\\n     * @dev Throws if the sender is not the owner.\\n     */\\n    function _checkOwner() internal view virtual {\\n        if (owner() != _msgSender()) {\\n            revert OwnableUnauthorizedAccount(_msgSender());\\n        }\\n    }\\n\\n    /**\\n     * @dev Leaves the contract without owner. It will not be possible to call\\n     * `onlyOwner` functions. Can only be called by the current owner.\\n     *\\n     * NOTE: Renouncing ownership will leave the contract without an owner,\\n     * thereby disabling any functionality that is only available to the owner.\\n     */\\n    function renounceOwnership() public virtual onlyOwner {\\n        _transferOwnership(address(0));\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Can only be called by the current owner.\\n     */\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        if (newOwner == address(0)) {\\n            revert OwnableInvalidOwner(address(0));\\n        }\\n        _transferOwnership(newOwner);\\n    }\\n\\n    /**\\n     * @dev Transfers ownership of the contract to a new account (`newOwner`).\\n     * Internal function without access restriction.\\n     */\\n    function _transferOwnership(address newOwner) internal virtual {\\n        address oldOwner = _owner;\\n        _owner = newOwner;\\n        emit OwnershipTransferred(oldOwner, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/Context.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v5.0.1) (utils/Context.sol)\\n\\npragma solidity ^0.8.20;\\n\\n/**\\n * @dev Provides information about the current execution context, including the\\n * sender of the transaction and its data. While these are generally available\\n * via msg.sender and msg.data, they should not be accessed in such a direct\\n * manner, since when dealing with meta-transactions the account sending and\\n * paying for execution may not be the actual sender (as far as an application\\n * is concerned).\\n *\\n * This contract is only required for intermediate, library-like contracts.\\n */\\nabstract contract Context {\\n    function _msgSender() internal view virtual returns (address) {\\n        return msg.sender;\\n    }\\n\\n    function _msgData() internal view virtual returns (bytes calldata) {\\n        return msg.data;\\n    }\\n\\n    function _contextSuffixLength() internal view virtual returns (uint256) {\\n        return 0;\\n    }\\n}\\n\",\"keccak256\":\"0x493033a8d1b176a037b2cc6a04dad01a5c157722049bbecf632ca876224dd4b2\",\"license\":\"MIT\"},\"contracts/UniversityPayments.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.20;\\n\\nimport \\\"@openzeppelin/contracts/access/Ownable.sol\\\";\\n\\n/// @title UniversityPayments\\n/// @notice A transparent and decentralized payment system for university services\\n/// @dev Implements payment processing with automatic refunds for overpayments\\ncontract UniversityPayments is Ownable {\\n    struct Service {\\n        string name;\\n        uint256 price;\\n        bool active;\\n    }\\n\\n    struct Payment {\\n        address student;\\n        uint256 serviceId;\\n        uint256 amount;\\n        uint256 timestamp;\\n    }\\n\\n    Service[] public services;\\n    Payment[] public payments;\\n    mapping(address => Payment[]) public studentPayments;\\n\\n    event ServiceCreated(uint256 indexed serviceId, string name, uint256 price);\\n    event ServiceUpdated(uint256 indexed serviceId, string name, uint256 price, bool active);\\n    event PaymentMade(address indexed student, uint256 indexed serviceId, uint256 amount);\\n    event RefundIssued(address indexed student, uint256 amount);\\n    event FundsWithdrawn(address indexed admin, uint256 amount);\\n\\n    /// @notice Initializes the contract with the deployer as owner\\n    constructor() Ownable(msg.sender) {}\\n\\n    /// @notice Creates a new service\\n    /// @dev Only callable by contract owner\\n    /// @param _name The name of the service\\n    /// @param _price The price in wei for the service\\n    function createService(string memory _name, uint256 _price) external onlyOwner {\\n        require(bytes(_name).length > 0, \\\"Service name cannot be empty\\\");\\n        require(_price > 0, \\\"Service price must be greater than 0\\\");\\n\\n        services.push(Service(_name, _price, true));\\n        emit ServiceCreated(services.length - 1, _name, _price);\\n    }\\n\\n    /// @notice Updates an existing service\\n    /// @dev Only callable by contract owner\\n    /// @param _serviceId The ID of the service to update\\n    /// @param _name The new name for the service\\n    /// @param _price The new price in wei for the service\\n    /// @param _active Whether the service should be active\\n    function updateService(uint256 _serviceId, string memory _name, uint256 _price, bool _active) external onlyOwner {\\n        require(_serviceId < services.length, \\\"Service does not exist\\\");\\n        require(bytes(_name).length > 0, \\\"Service name cannot be empty\\\");\\n        require(_price > 0, \\\"Service price must be greater than 0\\\");\\n\\n        services[_serviceId].name = _name;\\n        services[_serviceId].price = _price;\\n        services[_serviceId].active = _active;\\n\\n        emit ServiceUpdated(_serviceId, _name, _price, _active);\\n    }\\n\\n    /// @notice Processes a payment for a service\\n    /// @dev Automatically refunds any overpayment to the student\\n    /// @param _serviceId The ID of the service being paid for\\n    function payForService(uint256 _serviceId) external payable {\\n        require(_serviceId < services.length, \\\"Service does not exist\\\");\\n        require(services[_serviceId].active, \\\"Service is not active\\\");\\n        require(msg.value >= services[_serviceId].price, \\\"Insufficient payment\\\");\\n\\n        uint256 servicePrice = services[_serviceId].price;\\n        uint256 overpayment = msg.value - servicePrice;\\n\\n        // Record payment with actual service price\\n        payments.push(Payment(msg.sender, _serviceId, servicePrice, block.timestamp));\\n        studentPayments[msg.sender].push(payments[payments.length - 1]);\\n\\n        emit PaymentMade(msg.sender, _serviceId, servicePrice);\\n\\n        // Refund overpayment if any\\n        if (overpayment > 0) {\\n            (bool refundSuccess, ) = payable(msg.sender).call{ value: overpayment }(\\\"\\\");\\n            require(refundSuccess, \\\"Refund failed\\\");\\n            emit RefundIssued(msg.sender, overpayment);\\n        }\\n    }\\n\\n    /// @notice Withdraws all contract funds to the owner\\n    /// @dev Only callable by contract owner\\n    function withdrawFunds() external onlyOwner {\\n        uint256 balance = address(this).balance;\\n        require(balance > 0, \\\"No funds to withdraw\\\");\\n\\n        (bool success, ) = payable(owner()).call{ value: balance }(\\\"\\\");\\n        require(success, \\\"Transfer failed\\\");\\n\\n        emit FundsWithdrawn(owner(), balance);\\n    }\\n\\n    /// @notice Returns all available services\\n    /// @return Array of all services\\n    function getServices() external view returns (Service[] memory) {\\n        return services;\\n    }\\n\\n    /// @notice Returns all payments made\\n    /// @return Array of all payments\\n    function getPayments() external view returns (Payment[] memory) {\\n        return payments;\\n    }\\n\\n    /// @notice Returns all payments made by a specific student\\n    /// @param _student The address of the student\\n    /// @return Array of payments made by the student\\n    function getStudentPayments(address _student) external view returns (Payment[] memory) {\\n        return studentPayments[_student];\\n    }\\n\\n    /// @notice Returns the current contract balance\\n    /// @return The balance in wei\\n    function getContractBalance() external view returns (uint256) {\\n        return address(this).balance;\\n    }\\n\\n    /// @notice Returns the total number of services\\n    /// @return The count of services\\n    function getServiceCount() external view returns (uint256) {\\n        return services.length;\\n    }\\n\\n    /// @notice Returns the total number of payments\\n    /// @return The count of payments\\n    function getPaymentCount() external view returns (uint256) {\\n        return payments.length;\\n    }\\n}\\n\",\"keccak256\":\"0x52267d07e138f8cc5f7d47f824de9564f52596166a142397924b4772b9c3d386\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b503380603557604051631e4fbdf760e01b81526000600482015260240160405180910390fd5b603c816041565b506091565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b61149e806100a06000396000f3fe6080604052600436106100f35760003560e01c806387d817891161008a578063d56bd14211610059578063d56bd142146102a4578063dbec6def146102b9578063ec967301146102cc578063f2fde38b146102ec57600080fd5b806387d81789146102185780638da5cb5b14610238578063af32a03f14610260578063c22c4f431461027557600080fd5b80633672404e116100c65780633672404e146101af5780636f9fb98a146101ce578063715018a6146101e157806375417851146101f657600080fd5b80630b5d3a43146100f85780631cf82bd21461012e5780631eaa0f8a1461015057806324600fc31461019a575b600080fd5b34801561010457600080fd5b50610118610113366004610f61565b61030c565b6040516101259190610f83565b60405180910390f35b34801561013a57600080fd5b5061014e610149366004611097565b6103ac565b005b34801561015c57600080fd5b5061017061016b3660046110dc565b6104fb565b604080516001600160a01b0390951685526020850193909352918301526060820152608001610125565b3480156101a657600080fd5b5061014e61054b565b3480156101bb57600080fd5b506001545b604051908152602001610125565b3480156101da57600080fd5b50476101c0565b3480156101ed57600080fd5b5061014e610673565b34801561020257600080fd5b5061020b610687565b604051610125919061114c565b34801561022457600080fd5b506101706102333660046111d3565b610797565b34801561024457600080fd5b506000546040516001600160a01b039091168152602001610125565b34801561026c57600080fd5b506002546101c0565b34801561028157600080fd5b506102956102903660046111d3565b6107db565b604051610125939291906111ec565b3480156102b057600080fd5b506101186108a1565b61014e6102c73660046111d3565b610922565b3480156102d857600080fd5b5061014e6102e7366004611216565b610cfc565b3480156102f857600080fd5b5061014e610307366004610f61565b610e8a565b6001600160a01b0381166000908152600360209081526040808320805482518185028101850190935280835260609492939192909184015b828210156103a1576000848152602090819020604080516080810182526004860290920180546001600160a01b03168352600180820154848601526002820154928401929092526003015460608301529083529092019101610344565b505050509050919050565b6103b4610ec8565b600082511161040a5760405162461bcd60e51b815260206004820152601c60248201527f53657276696365206e616d652063616e6e6f7420626520656d7074790000000060448201526064015b60405180910390fd5b6000811161042a5760405162461bcd60e51b81526004016104019061127e565b6040805160608101825283815260208101839052600191810182905281548083018355600092909252805190916003027fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf601908190610489908261134a565b5060208201516001828101919091556040909201516002909101805460ff191691151591909117905580546104be9190611409565b7fde757be6d27f7e58377d945677230e4643bea7f0ae6a2039f0ffcff08a46b36083836040516104ef929190611430565b60405180910390a25050565b6003602052816000526040600020818154811061051757600080fd5b600091825260209091206004909102018054600182015460028301546003909301546001600160a01b039092169450925084565b610553610ec8565b47806105985760405162461bcd60e51b81526020600482015260146024820152734e6f2066756e647320746f20776974686472617760601b6044820152606401610401565b600080546040516001600160a01b039091169083908381818185875af1925050503d80600081146105e5576040519150601f19603f3d011682016040523d82523d6000602084013e6105ea565b606091505b505090508061062d5760405162461bcd60e51b815260206004820152600f60248201526e151c985b9cd9995c8819985a5b1959608a1b6044820152606401610401565b6000546001600160a01b03166001600160a01b03167feaff4b37086828766ad3268786972c0cd24259d4c87a80f9d3963a3c3d999b0d836040516104ef91815260200190565b61067b610ec8565b6106856000610ef5565b565b60606001805480602002602001604051908101604052809291908181526020016000905b8282101561078e57838290600052602060002090600302016040518060600160405290816000820180546106de906112c2565b80601f016020809104026020016040519081016040528092919081815260200182805461070a906112c2565b80156107575780601f1061072c57610100808354040283529160200191610757565b820191906000526020600020905b81548152906001019060200180831161073a57829003601f168201915b505050918352505060018281015460208084019190915260029093015460ff161515604090920191909152918352920191016106ab565b50505050905090565b600281815481106107a757600080fd5b600091825260209091206004909102018054600182015460028301546003909301546001600160a01b039092169350919084565b600181815481106107eb57600080fd5b906000526020600020906003020160009150905080600001805461080e906112c2565b80601f016020809104026020016040519081016040528092919081815260200182805461083a906112c2565b80156108875780601f1061085c57610100808354040283529160200191610887565b820191906000526020600020905b81548152906001019060200180831161086a57829003601f168201915b50505050600183015460029093015491929160ff16905083565b60606002805480602002602001604051908101604052809291908181526020016000905b8282101561078e576000848152602090819020604080516080810182526004860290920180546001600160a01b031683526001808201548486015260028201549284019290925260030154606083015290835290920191016108c5565b600154811061096c5760405162461bcd60e51b815260206004820152601660248201527514d95c9d9a58d948191bd95cc81b9bdd08195e1a5cdd60521b6044820152606401610401565b6001818154811061097f5761097f611452565b600091825260209091206002600390920201015460ff166109da5760405162461bcd60e51b815260206004820152601560248201527453657276696365206973206e6f742061637469766560581b6044820152606401610401565b600181815481106109ed576109ed611452565b906000526020600020906003020160010154341015610a455760405162461bcd60e51b8152602060048201526014602482015273125b9cdd59999a58da595b9d081c185e5b595b9d60621b6044820152606401610401565b600060018281548110610a5a57610a5a611452565b600091825260208220600160039092020101549150610a798234611409565b6040805160808101825233808252602080830188815283850188815242606086019081526002805460018082018355600083815298517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace600490930292830180546001600160a01b0319166001600160a01b0390921691909117905594517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5acf82015592517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ad084015590517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ad1909201919091559284526003909152929091208154939450929091610b8891611409565b81548110610b9857610b98611452565b600091825260208083208454600180820187559585529382902060049384029091018054939094020180546001600160a01b0319166001600160a01b03909316929092178255828401549382019390935560028083015490820155600391820154910155604051838152849133917fc65a4e529c0450a515882508bea7ee3485fbfdf8436e0bd13dc38dfbc859b1cb910160405180910390a38015610cf757604051600090339083908381818185875af1925050503d8060008114610c79576040519150601f19603f3d011682016040523d82523d6000602084013e610c7e565b606091505b5050905080610cbf5760405162461bcd60e51b815260206004820152600d60248201526c1499599d5b990819985a5b1959609a1b6044820152606401610401565b60405182815233907fa171b6942063c6f2800ce40a780edce37baa2b618571b11eedd1e69e626e7d76906020015b60405180910390a2505b505050565b610d04610ec8565b6001548410610d4e5760405162461bcd60e51b815260206004820152601660248201527514d95c9d9a58d948191bd95cc81b9bdd08195e1a5cdd60521b6044820152606401610401565b6000835111610d9f5760405162461bcd60e51b815260206004820152601c60248201527f53657276696365206e616d652063616e6e6f7420626520656d707479000000006044820152606401610401565b60008211610dbf5760405162461bcd60e51b81526004016104019061127e565b8260018581548110610dd357610dd3611452565b90600052602060002090600302016000019081610df0919061134a565b508160018581548110610e0557610e05611452565b9060005260206000209060030201600101819055508060018581548110610e2e57610e2e611452565b906000526020600020906003020160020160006101000a81548160ff021916908315150217905550837f44854e574bb78f46d4a0921e7f2d2e859684fb53c31fea549916ca23394e0259848484604051610ced939291906111ec565b610e92610ec8565b6001600160a01b038116610ebc57604051631e4fbdf760e01b815260006004820152602401610401565b610ec581610ef5565b50565b6000546001600160a01b031633146106855760405163118cdaa760e01b8152336004820152602401610401565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b80356001600160a01b0381168114610f5c57600080fd5b919050565b600060208284031215610f7357600080fd5b610f7c82610f45565b9392505050565b602080825282518282018190526000918401906040840190835b81811015610fe757835180516001600160a01b0316845260208082015181860152604080830151908601526060918201519185019190915290930192608090920191600101610f9d565b509095945050505050565b634e487b7160e01b600052604160045260246000fd5b600082601f83011261101957600080fd5b813567ffffffffffffffff81111561103357611033610ff2565b604051601f8201601f19908116603f0116810167ffffffffffffffff8111828210171561106257611062610ff2565b60405281815283820160200185101561107a57600080fd5b816020850160208301376000918101602001919091529392505050565b600080604083850312156110aa57600080fd5b823567ffffffffffffffff8111156110c157600080fd5b6110cd85828601611008565b95602094909401359450505050565b600080604083850312156110ef57600080fd5b6110f883610f45565b946020939093013593505050565b6000815180845260005b8181101561112c57602081850181015186830182015201611110565b506000602082860101526020601f19601f83011685010191505092915050565b6000602082016020835280845180835260408501915060408160051b86010192506020860160005b828110156111c757603f19878603018452815180516060875261119a6060880182611106565b60208381015189820152604093840151151593909801929092525094938401939190910190600101611174565b50929695505050505050565b6000602082840312156111e557600080fd5b5035919050565b6060815260006111ff6060830186611106565b602083019490945250901515604090910152919050565b6000806000806080858703121561122c57600080fd5b84359350602085013567ffffffffffffffff81111561124a57600080fd5b61125687828801611008565b935050604085013591506060850135801515811461127357600080fd5b939692955090935050565b60208082526024908201527f53657276696365207072696365206d75737420626520677265617465722074686040820152630616e20360e41b606082015260800190565b600181811c908216806112d657607f821691505b6020821081036112f657634e487b7160e01b600052602260045260246000fd5b50919050565b601f821115610cf757806000526020600020601f840160051c810160208510156113235750805b601f840160051c820191505b81811015611343576000815560010161132f565b5050505050565b815167ffffffffffffffff81111561136457611364610ff2565b6113788161137284546112c2565b846112fc565b6020601f8211600181146113ac57600083156113945750848201515b600019600385901b1c1916600184901b178455611343565b600084815260208120601f198516915b828110156113dc57878501518255602094850194600190920191016113bc565b50848210156113fa5786840151600019600387901b60f8161c191681555b50505050600190811b01905550565b8181038181111561142a57634e487b7160e01b600052601160045260246000fd5b92915050565b6040815260006114436040830185611106565b90508260208301529392505050565b634e487b7160e01b600052603260045260246000fdfea2646970667358221220ed4a0178489925700410dae6967246ae2b2c30c88dbcb730d775d9ceb932d5f864736f6c634300081e0033",
+  "deployedBytecode": "0x6080604052600436106100f35760003560e01c806387d817891161008a578063d56bd14211610059578063d56bd142146102a4578063dbec6def146102b9578063ec967301146102cc578063f2fde38b146102ec57600080fd5b806387d81789146102185780638da5cb5b14610238578063af32a03f14610260578063c22c4f431461027557600080fd5b80633672404e116100c65780633672404e146101af5780636f9fb98a146101ce578063715018a6146101e157806375417851146101f657600080fd5b80630b5d3a43146100f85780631cf82bd21461012e5780631eaa0f8a1461015057806324600fc31461019a575b600080fd5b34801561010457600080fd5b50610118610113366004610f61565b61030c565b6040516101259190610f83565b60405180910390f35b34801561013a57600080fd5b5061014e610149366004611097565b6103ac565b005b34801561015c57600080fd5b5061017061016b3660046110dc565b6104fb565b604080516001600160a01b0390951685526020850193909352918301526060820152608001610125565b3480156101a657600080fd5b5061014e61054b565b3480156101bb57600080fd5b506001545b604051908152602001610125565b3480156101da57600080fd5b50476101c0565b3480156101ed57600080fd5b5061014e610673565b34801561020257600080fd5b5061020b610687565b604051610125919061114c565b34801561022457600080fd5b506101706102333660046111d3565b610797565b34801561024457600080fd5b506000546040516001600160a01b039091168152602001610125565b34801561026c57600080fd5b506002546101c0565b34801561028157600080fd5b506102956102903660046111d3565b6107db565b604051610125939291906111ec565b3480156102b057600080fd5b506101186108a1565b61014e6102c73660046111d3565b610922565b3480156102d857600080fd5b5061014e6102e7366004611216565b610cfc565b3480156102f857600080fd5b5061014e610307366004610f61565b610e8a565b6001600160a01b0381166000908152600360209081526040808320805482518185028101850190935280835260609492939192909184015b828210156103a1576000848152602090819020604080516080810182526004860290920180546001600160a01b03168352600180820154848601526002820154928401929092526003015460608301529083529092019101610344565b505050509050919050565b6103b4610ec8565b600082511161040a5760405162461bcd60e51b815260206004820152601c60248201527f53657276696365206e616d652063616e6e6f7420626520656d7074790000000060448201526064015b60405180910390fd5b6000811161042a5760405162461bcd60e51b81526004016104019061127e565b6040805160608101825283815260208101839052600191810182905281548083018355600092909252805190916003027fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf601908190610489908261134a565b5060208201516001828101919091556040909201516002909101805460ff191691151591909117905580546104be9190611409565b7fde757be6d27f7e58377d945677230e4643bea7f0ae6a2039f0ffcff08a46b36083836040516104ef929190611430565b60405180910390a25050565b6003602052816000526040600020818154811061051757600080fd5b600091825260209091206004909102018054600182015460028301546003909301546001600160a01b039092169450925084565b610553610ec8565b47806105985760405162461bcd60e51b81526020600482015260146024820152734e6f2066756e647320746f20776974686472617760601b6044820152606401610401565b600080546040516001600160a01b039091169083908381818185875af1925050503d80600081146105e5576040519150601f19603f3d011682016040523d82523d6000602084013e6105ea565b606091505b505090508061062d5760405162461bcd60e51b815260206004820152600f60248201526e151c985b9cd9995c8819985a5b1959608a1b6044820152606401610401565b6000546001600160a01b03166001600160a01b03167feaff4b37086828766ad3268786972c0cd24259d4c87a80f9d3963a3c3d999b0d836040516104ef91815260200190565b61067b610ec8565b6106856000610ef5565b565b60606001805480602002602001604051908101604052809291908181526020016000905b8282101561078e57838290600052602060002090600302016040518060600160405290816000820180546106de906112c2565b80601f016020809104026020016040519081016040528092919081815260200182805461070a906112c2565b80156107575780601f1061072c57610100808354040283529160200191610757565b820191906000526020600020905b81548152906001019060200180831161073a57829003601f168201915b505050918352505060018281015460208084019190915260029093015460ff161515604090920191909152918352920191016106ab565b50505050905090565b600281815481106107a757600080fd5b600091825260209091206004909102018054600182015460028301546003909301546001600160a01b039092169350919084565b600181815481106107eb57600080fd5b906000526020600020906003020160009150905080600001805461080e906112c2565b80601f016020809104026020016040519081016040528092919081815260200182805461083a906112c2565b80156108875780601f1061085c57610100808354040283529160200191610887565b820191906000526020600020905b81548152906001019060200180831161086a57829003601f168201915b50505050600183015460029093015491929160ff16905083565b60606002805480602002602001604051908101604052809291908181526020016000905b8282101561078e576000848152602090819020604080516080810182526004860290920180546001600160a01b031683526001808201548486015260028201549284019290925260030154606083015290835290920191016108c5565b600154811061096c5760405162461bcd60e51b815260206004820152601660248201527514d95c9d9a58d948191bd95cc81b9bdd08195e1a5cdd60521b6044820152606401610401565b6001818154811061097f5761097f611452565b600091825260209091206002600390920201015460ff166109da5760405162461bcd60e51b815260206004820152601560248201527453657276696365206973206e6f742061637469766560581b6044820152606401610401565b600181815481106109ed576109ed611452565b906000526020600020906003020160010154341015610a455760405162461bcd60e51b8152602060048201526014602482015273125b9cdd59999a58da595b9d081c185e5b595b9d60621b6044820152606401610401565b600060018281548110610a5a57610a5a611452565b600091825260208220600160039092020101549150610a798234611409565b6040805160808101825233808252602080830188815283850188815242606086019081526002805460018082018355600083815298517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace600490930292830180546001600160a01b0319166001600160a01b0390921691909117905594517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5acf82015592517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ad084015590517f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ad1909201919091559284526003909152929091208154939450929091610b8891611409565b81548110610b9857610b98611452565b600091825260208083208454600180820187559585529382902060049384029091018054939094020180546001600160a01b0319166001600160a01b03909316929092178255828401549382019390935560028083015490820155600391820154910155604051838152849133917fc65a4e529c0450a515882508bea7ee3485fbfdf8436e0bd13dc38dfbc859b1cb910160405180910390a38015610cf757604051600090339083908381818185875af1925050503d8060008114610c79576040519150601f19603f3d011682016040523d82523d6000602084013e610c7e565b606091505b5050905080610cbf5760405162461bcd60e51b815260206004820152600d60248201526c1499599d5b990819985a5b1959609a1b6044820152606401610401565b60405182815233907fa171b6942063c6f2800ce40a780edce37baa2b618571b11eedd1e69e626e7d76906020015b60405180910390a2505b505050565b610d04610ec8565b6001548410610d4e5760405162461bcd60e51b815260206004820152601660248201527514d95c9d9a58d948191bd95cc81b9bdd08195e1a5cdd60521b6044820152606401610401565b6000835111610d9f5760405162461bcd60e51b815260206004820152601c60248201527f53657276696365206e616d652063616e6e6f7420626520656d707479000000006044820152606401610401565b60008211610dbf5760405162461bcd60e51b81526004016104019061127e565b8260018581548110610dd357610dd3611452565b90600052602060002090600302016000019081610df0919061134a565b508160018581548110610e0557610e05611452565b9060005260206000209060030201600101819055508060018581548110610e2e57610e2e611452565b906000526020600020906003020160020160006101000a81548160ff021916908315150217905550837f44854e574bb78f46d4a0921e7f2d2e859684fb53c31fea549916ca23394e0259848484604051610ced939291906111ec565b610e92610ec8565b6001600160a01b038116610ebc57604051631e4fbdf760e01b815260006004820152602401610401565b610ec581610ef5565b50565b6000546001600160a01b031633146106855760405163118cdaa760e01b8152336004820152602401610401565b600080546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b80356001600160a01b0381168114610f5c57600080fd5b919050565b600060208284031215610f7357600080fd5b610f7c82610f45565b9392505050565b602080825282518282018190526000918401906040840190835b81811015610fe757835180516001600160a01b0316845260208082015181860152604080830151908601526060918201519185019190915290930192608090920191600101610f9d565b509095945050505050565b634e487b7160e01b600052604160045260246000fd5b600082601f83011261101957600080fd5b813567ffffffffffffffff81111561103357611033610ff2565b604051601f8201601f19908116603f0116810167ffffffffffffffff8111828210171561106257611062610ff2565b60405281815283820160200185101561107a57600080fd5b816020850160208301376000918101602001919091529392505050565b600080604083850312156110aa57600080fd5b823567ffffffffffffffff8111156110c157600080fd5b6110cd85828601611008565b95602094909401359450505050565b600080604083850312156110ef57600080fd5b6110f883610f45565b946020939093013593505050565b6000815180845260005b8181101561112c57602081850181015186830182015201611110565b506000602082860101526020601f19601f83011685010191505092915050565b6000602082016020835280845180835260408501915060408160051b86010192506020860160005b828110156111c757603f19878603018452815180516060875261119a6060880182611106565b60208381015189820152604093840151151593909801929092525094938401939190910190600101611174565b50929695505050505050565b6000602082840312156111e557600080fd5b5035919050565b6060815260006111ff6060830186611106565b602083019490945250901515604090910152919050565b6000806000806080858703121561122c57600080fd5b84359350602085013567ffffffffffffffff81111561124a57600080fd5b61125687828801611008565b935050604085013591506060850135801515811461127357600080fd5b939692955090935050565b60208082526024908201527f53657276696365207072696365206d75737420626520677265617465722074686040820152630616e20360e41b606082015260800190565b600181811c908216806112d657607f821691505b6020821081036112f657634e487b7160e01b600052602260045260246000fd5b50919050565b601f821115610cf757806000526020600020601f840160051c810160208510156113235750805b601f840160051c820191505b81811015611343576000815560010161132f565b5050505050565b815167ffffffffffffffff81111561136457611364610ff2565b6113788161137284546112c2565b846112fc565b6020601f8211600181146113ac57600083156113945750848201515b600019600385901b1c1916600184901b178455611343565b600084815260208120601f198516915b828110156113dc57878501518255602094850194600190920191016113bc565b50848210156113fa5786840151600019600387901b60f8161c191681555b50505050600190811b01905550565b8181038181111561142a57634e487b7160e01b600052601160045260246000fd5b92915050565b6040815260006114436040830185611106565b90508260208301529392505050565b634e487b7160e01b600052603260045260246000fdfea2646970667358221220ed4a0178489925700410dae6967246ae2b2c30c88dbcb730d775d9ceb932d5f864736f6c634300081e0033",
+  "devdoc": {
+    "details": "Implements payment processing with automatic refunds for overpayments",
+    "errors": {
+      "OwnableInvalidOwner(address)": [
+        {
+          "details": "The owner is not a valid owner account. (eg. `address(0)`)"
+        }
+      ],
+      "OwnableUnauthorizedAccount(address)": [
+        {
+          "details": "The caller account is not authorized to perform an operation."
+        }
+      ]
+    },
+    "kind": "dev",
+    "methods": {
+      "createService(string,uint256)": {
+        "details": "Only callable by contract owner",
+        "params": {
+          "_name": "The name of the service",
+          "_price": "The price in wei for the service"
+        }
+      },
+      "getContractBalance()": {
+        "returns": {
+          "_0": "The balance in wei"
+        }
+      },
+      "getPaymentCount()": {
+        "returns": {
+          "_0": "The count of payments"
+        }
+      },
+      "getPayments()": {
+        "returns": {
+          "_0": "Array of all payments"
+        }
+      },
+      "getServiceCount()": {
+        "returns": {
+          "_0": "The count of services"
+        }
+      },
+      "getServices()": {
+        "returns": {
+          "_0": "Array of all services"
+        }
+      },
+      "getStudentPayments(address)": {
+        "params": {
+          "_student": "The address of the student"
+        },
+        "returns": {
+          "_0": "Array of payments made by the student"
+        }
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "payForService(uint256)": {
+        "details": "Automatically refunds any overpayment to the student",
+        "params": {
+          "_serviceId": "The ID of the service being paid for"
+        }
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      },
+      "updateService(uint256,string,uint256,bool)": {
+        "details": "Only callable by contract owner",
+        "params": {
+          "_active": "Whether the service should be active",
+          "_name": "The new name for the service",
+          "_price": "The new price in wei for the service",
+          "_serviceId": "The ID of the service to update"
+        }
+      },
+      "withdrawFunds()": {
+        "details": "Only callable by contract owner"
+      }
+    },
+    "title": "UniversityPayments",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "constructor": {
+        "notice": "Initializes the contract with the deployer as owner"
+      },
+      "createService(string,uint256)": {
+        "notice": "Creates a new service"
+      },
+      "getContractBalance()": {
+        "notice": "Returns the current contract balance"
+      },
+      "getPaymentCount()": {
+        "notice": "Returns the total number of payments"
+      },
+      "getPayments()": {
+        "notice": "Returns all payments made"
+      },
+      "getServiceCount()": {
+        "notice": "Returns the total number of services"
+      },
+      "getServices()": {
+        "notice": "Returns all available services"
+      },
+      "getStudentPayments(address)": {
+        "notice": "Returns all payments made by a specific student"
+      },
+      "payForService(uint256)": {
+        "notice": "Processes a payment for a service"
+      },
+      "updateService(uint256,string,uint256,bool)": {
+        "notice": "Updates an existing service"
+      },
+      "withdrawFunds()": {
+        "notice": "Withdraws all contract funds to the owner"
+      }
+    },
+    "notice": "A transparent and decentralized payment system for university services",
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 8,
+        "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+        "label": "_owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 203,
+        "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+        "label": "services",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_array(t_struct(Service)190_storage)dyn_storage"
+      },
+      {
+        "astId": 207,
+        "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+        "label": "payments",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_array(t_struct(Payment)199_storage)dyn_storage"
+      },
+      {
+        "astId": 213,
+        "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+        "label": "studentPayments",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_mapping(t_address,t_array(t_struct(Payment)199_storage)dyn_storage)"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_array(t_struct(Payment)199_storage)dyn_storage": {
+        "base": "t_struct(Payment)199_storage",
+        "encoding": "dynamic_array",
+        "label": "struct UniversityPayments.Payment[]",
+        "numberOfBytes": "32"
+      },
+      "t_array(t_struct(Service)190_storage)dyn_storage": {
+        "base": "t_struct(Service)190_storage",
+        "encoding": "dynamic_array",
+        "label": "struct UniversityPayments.Service[]",
+        "numberOfBytes": "32"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_array(t_struct(Payment)199_storage)dyn_storage)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => struct UniversityPayments.Payment[])",
+        "numberOfBytes": "32",
+        "value": "t_array(t_struct(Payment)199_storage)dyn_storage"
+      },
+      "t_string_storage": {
+        "encoding": "bytes",
+        "label": "string",
+        "numberOfBytes": "32"
+      },
+      "t_struct(Payment)199_storage": {
+        "encoding": "inplace",
+        "label": "struct UniversityPayments.Payment",
+        "members": [
+          {
+            "astId": 192,
+            "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+            "label": "student",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_address"
+          },
+          {
+            "astId": 194,
+            "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+            "label": "serviceId",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 196,
+            "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+            "label": "amount",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 198,
+            "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+            "label": "timestamp",
+            "offset": 0,
+            "slot": "3",
+            "type": "t_uint256"
+          }
+        ],
+        "numberOfBytes": "128"
+      },
+      "t_struct(Service)190_storage": {
+        "encoding": "inplace",
+        "label": "struct UniversityPayments.Service",
+        "members": [
+          {
+            "astId": 185,
+            "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+            "label": "name",
+            "offset": 0,
+            "slot": "0",
+            "type": "t_string_storage"
+          },
+          {
+            "astId": 187,
+            "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+            "label": "price",
+            "offset": 0,
+            "slot": "1",
+            "type": "t_uint256"
+          },
+          {
+            "astId": 189,
+            "contract": "contracts/UniversityPayments.sol:UniversityPayments",
+            "label": "active",
+            "offset": 0,
+            "slot": "2",
+            "type": "t_bool"
+          }
+        ],
+        "numberOfBytes": "96"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

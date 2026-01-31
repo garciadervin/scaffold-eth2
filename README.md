@@ -43,7 +43,11 @@ yarn test       # Run smart contract tests
 ```
 
 ## 📜 Contract Details
-The `UniversityPayments` contract includes:
+The `UniversityPayments` contract is deployed on **Sepolia Testnet**:
+- **Address**: `0x463620e2E24c3900FEF49111BC89A2A82650127a`
+- **Verification**: Verified on [Etherscan](https://sepolia.etherscan.io/address/0x463620e2E24c3900FEF49111BC89A2A82650127a)
+
+The contract includes:
 - Automatic refunds for overpayment.
 - Ownership-based access control for service management.
 - Transparent fund withdrawal system.

@@ -5,9 +5,9 @@
 import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 
 const deployedContracts = {
-  31337: {
+  11155111: {
     UniversityPayments: {
-      address: "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+      address: "0x463620e2E24c3900FEF49111BC89A2A82650127a",
       abi: [
         {
           inputs: [],
@@ -526,10 +526,10 @@ const deployedContracts = {
         renounceOwnership: "@openzeppelin/contracts/access/Ownable.sol",
         transferOwnership: "@openzeppelin/contracts/access/Ownable.sol",
       },
-      deployedOnBlock: 3,
+      deployedOnBlock: 10160656,
     },
     YourContract: {
-      address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+      address: "0x24114a27aA97FaCF08665A96A8De62e1114E569B",
       abi: [
         {
           inputs: [
@@ -670,7 +670,7 @@ const deployedContracts = {
         },
       ],
       inheritedFunctions: {},
-      deployedOnBlock: 1,
+      deployedOnBlock: 10160655,
     },
   },
 } as const;
