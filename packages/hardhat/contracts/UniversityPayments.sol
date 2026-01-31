@@ -40,7 +40,7 @@ contract UniversityPayments is Ownable {
     function createService(string memory _name, uint256 _price) external onlyOwner {
         require(bytes(_name).length > 0, "Service name cannot be empty");
         require(_price > 0, "Service price must be greater than 0");
-        
+
         services.push(Service(_name, _price, true));
         emit ServiceCreated(services.length - 1, _name, _price);
     }
@@ -55,11 +55,11 @@ contract UniversityPayments is Ownable {
         require(_serviceId < services.length, "Service does not exist");
         require(bytes(_name).length > 0, "Service name cannot be empty");
         require(_price > 0, "Service price must be greater than 0");
-        
+
         services[_serviceId].name = _name;
         services[_serviceId].price = _price;
         services[_serviceId].active = _active;
-        
+
         emit ServiceUpdated(_serviceId, _name, _price, _active);
     }
 
@@ -82,7 +82,7 @@ contract UniversityPayments is Ownable {
 
         // Refund overpayment if any
         if (overpayment > 0) {
-            (bool refundSuccess, ) = payable(msg.sender).call{value: overpayment}("");
+            (bool refundSuccess, ) = payable(msg.sender).call{ value: overpayment }("");
             require(refundSuccess, "Refund failed");
             emit RefundIssued(msg.sender, overpayment);
         }
@@ -93,8 +93,8 @@ contract UniversityPayments is Ownable {
     function withdrawFunds() external onlyOwner {
         uint256 balance = address(this).balance;
         require(balance > 0, "No funds to withdraw");
-        
-        (bool success, ) = payable(owner()).call{value: balance}("");
+
+        (bool success, ) = payable(owner()).call{ value: balance }("");
         require(success, "Transfer failed");
 
         emit FundsWithdrawn(owner(), balance);
