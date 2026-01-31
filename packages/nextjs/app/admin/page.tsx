@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Address, EtherInput } from "@scaffold-ui/components";
 import type { NextPage } from "next";
 import { formatEther, parseEther } from "viem";
@@ -61,7 +61,7 @@ const Admin: NextPage = () => {
     contractName: "UniversityPayments",
   });
 
-  const servicesArray = (services as Service[]) || [];
+  const servicesArray = useMemo(() => (services as Service[]) || [], [services]);
   const isOwner = connectedAddress && owner && connectedAddress.toLowerCase() === owner.toLowerCase();
 
   // Reset form

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Address } from "@scaffold-ui/components";
 import type { NextPage } from "next";
 import { formatEther } from "viem";
@@ -42,8 +42,8 @@ const History: NextPage = () => {
     functionName: "getPayments",
   });
 
-  const servicesArray = (services as Service[]) || [];
-  const paymentsArray = (payments as Payment[]) || [];
+  const servicesArray = useMemo(() => (services as Service[]) || [], [services]);
+  const paymentsArray = useMemo(() => (payments as Payment[]) || [], [payments]);
 
   const getServiceName = (id: bigint): string => {
     if (!servicesArray || servicesArray.length === 0) return "Unknown";

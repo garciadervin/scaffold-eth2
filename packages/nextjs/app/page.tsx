@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Address, EtherInput } from "@scaffold-ui/components";
 import type { NextPage } from "next";
 import { formatEther } from "viem";
@@ -114,8 +114,8 @@ const Home: NextPage = () => {
     return serviceArray[Number(id)]?.name || "Unknown";
   };
 
-  const servicesArray = (services as Service[]) || [];
-  const paymentsArray = (payments as Payment[]) || [];
+  const servicesArray = useMemo(() => (services as Service[]) || [], [services]);
+  const paymentsArray = useMemo(() => (payments as Payment[]) || [], [payments]);
 
   return (
     <div className="flex flex-col min-h-screen bg-base-200">
