@@ -1,0 +1,80 @@
+
+
+  UniversityPayments
+    Deployment
+      ✔ Should set the correct owner
+      ✔ Should start with zero services
+      ✔ Should start with zero payments
+      ✔ Should start with zero balance
+    Service Creation
+      ✔ Should allow owner to create a service
+      ✔ Should reject service creation with empty name
+      ✔ Should reject service creation with zero price
+      ✔ Should reject service creation from non-owner
+      ✔ Should increment service count correctly
+    Service Updates
+      ✔ Should allow owner to update a service
+      ✔ Should reject update with empty name
+      ✔ Should reject update with zero price
+      ✔ Should reject update of non-existent service
+      ✔ Should reject update from non-owner
+    Payment Processing
+      ✔ Should process exact payment correctly
+      ✔ Should process overpayment with refund
+      ✔ Should reject payment for non-existent service
+      ✔ Should reject payment for inactive service
+      ✔ Should reject insufficient payment
+      ✔ Should track multiple payments correctly
+      ✔ Should track student payments correctly
+    Fund Withdrawal
+      ✔ Should allow owner to withdraw funds
+      ✔ Should reject withdrawal from non-owner
+      ✔ Should reject withdrawal when balance is zero
+    View Functions
+      ✔ Should return all services
+      ✔ Should return all payments
+      ✔ Should return student-specific payments
+      ✔ Should return correct contract balance
+      ✔ Should return correct service count
+      ✔ Should return correct payment count
+    Access Control
+      ✔ Should allow owner to transfer ownership
+      ✔ Should prevent non-owner from transferring ownership
+      ✔ Should allow new owner to perform owner actions
+
+
+  33 passing (1s)
+
+···············································································································
+|  [32m[1mSolidity and Network Configuration[22m[39m                                                                         │
+··························|·················|···············|·················|································
+|  [36mSolidity: 0.8.30[39m       ·  [36mOptim: true[39m    ·  [36mRuns: 200[39m    ·  [36mviaIR: false[39m   ·    [36mBlock: 100,000,000 gas[39m     │
+··························|·················|···············|·················|································
+|  [32m[1mMethods[22m[39m                                                                                                    │
+··························|·················|···············|·················|················|···············
+|  [32m[1mContracts / Methods[22m[39m    ·  [1mMin[22m            ·  [1mMax[22m          ·  [1mAvg[22m            ·  [1m# calls[22m       ·  [1musd (avg)[22m   │
+··························|·················|···············|·················|················|···············
+|  [1mUniversityPayments[22m     ·                                                                                   │
+··························|·················|···············|·················|················|···············
+|      createService      ·         [36m99,301[39m  ·      [31m116,425[39m  ·        112,392  ·            34  ·           [32m[90m-[39m[32m[39m  │
+··························|·················|···············|·················|················|···············
+|      payForService      ·        [36m195,915[39m  ·      [31m235,727[39m  ·        215,246  ·            20  ·           [32m[90m-[39m[32m[39m  │
+··························|·················|···············|·················|················|···············
+|      transferOwnership  ·              [90m-[39m  ·            [90m-[39m  ·         28,653  ·             2  ·           [32m[90m-[39m[32m[39m  │
+··························|·················|···············|·················|················|···············
+|      updateService      ·         [36m35,664[39m  ·       [31m41,300[39m  ·         39,421  ·             3  ·           [32m[90m-[39m[32m[39m  │
+··························|·················|···············|·················|················|···············
+|      withdrawFunds      ·              [90m-[39m  ·            [90m-[39m  ·         32,111  ·             4  ·           [32m[90m-[39m[32m[39m  │
+··························|·················|···············|·················|················|···············
+|  [32m[1mDeployments[22m[39m                              ·                                 ·  [1m% of limit[22m    ·              │
+··························|·················|···············|·················|················|···············
+|  [1mUniversityPayments[22m     ·              [90m-[39m  ·            [90m-[39m  ·      1,219,101  ·         1.2 %  ·           [32m[90m-[39m[32m[39m  │
+··························|·················|···············|·················|················|···············
+|  [32m[1mKey[22m[39m                                                                                                        │
+···············································································································
+|  [35m[1m◯[22m[39m  Execution gas for this method does not include intrinsic gas overhead                                   │
+···············································································································
+|  [35m[1m△[22m[39m  Cost was non-zero but below the precision setting for the currency display (see options)                │
+···············································································································
+|  [35mToolchain:[39m  hardhat                                                                                        │
+···············································································································

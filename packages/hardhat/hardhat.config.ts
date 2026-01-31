@@ -53,10 +53,12 @@ const config: HardhatUserConfig = {
         enabled: process.env.MAINNET_FORKING_ENABLED === "true",
       },
       chainId: 31337,
+      blockGasLimit: 100000000, // Increased to prevent gas limit errors
     },
     localhost: {
       url: "http://127.0.0.1:8545",
       chainId: 31337,
+      gas: 100000000, // Match the increased block gas limit
     },
     mainnet: {
       url: "https://mainnet.rpc.buidlguidl.com",
