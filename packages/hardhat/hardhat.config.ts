@@ -16,7 +16,9 @@ import generateTsAbis from "./scripts/generateTsAbis";
 // You can get your own at https://dashboard.alchemyapi.io
 const providerApiKey = process.env.ALCHEMY_API_KEY || "";
 const sepoliaRpcUrl = process.env.SEPOLIA_RPC_URL || "";
-const deployerPrivateKey = process.env.DEPLOYER_PRIVATE_KEY ?? "";
+// Default to a 32-byte dummy key if no private key is provided to avoid Hardhat config validation errors
+const deployerPrivateKey =
+  process.env.DEPLOYER_PRIVATE_KEY ?? "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80";
 const etherscanApiKey = process.env.ETHERSCAN_API_KEY || "";
 
 const config: HardhatUserConfig = {
