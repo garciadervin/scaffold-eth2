@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
-import { Address, Balance, EtherInput } from "@scaffold-ui/components";
+import { Address, EtherInput } from "@scaffold-ui/components";
 import type { NextPage } from "next";
 import { formatEther } from "viem";
 import { useAccount } from "wagmi";
@@ -11,7 +10,6 @@ import {
   ClockIcon,
   CreditCardIcon,
   CurrencyDollarIcon,
-  HomeIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
@@ -120,58 +118,9 @@ const Home: NextPage = () => {
   const paymentsArray = (payments as Payment[]) || [];
 
   return (
-    <div className="flex min-h-screen bg-base-200 font-sans">
-      {/* Sidebar */}
-      <aside className="w-64 bg-base-100 shadow-xl flex flex-col border-r border-base-300">
-        <div className="p-6 border-b border-base-300">
-          <h1 className="text-xl font-bold text-primary flex items-center gap-2">
-            <CurrencyDollarIcon className="h-6 w-6" />
-            UniPay
-          </h1>
-        </div>
-        <nav className="flex-1 p-4 space-y-2">
-          <Link
-            href="/"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg bg-primary text-primary-content font-medium"
-          >
-            <HomeIcon className="h-5 w-5" />
-            Dashboard
-          </Link>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-base-200 transition-colors text-base-content/70"
-          >
-            <CreditCardIcon className="h-5 w-5" />
-            Payments
-          </a>
-          <a
-            href="#"
-            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-base-200 transition-colors text-base-content/70"
-          >
-            <ClockIcon className="h-5 w-5" />
-            History
-          </a>
-        </nav>
-        <div className="p-4 border-t border-base-300">
-          {connectedAddress ? (
-            <div className="space-y-2">
-              <p className="text-xs text-base-content/50 font-semibold uppercase">Connected Wallet</p>
-              <Address address={connectedAddress} />
-              <div className="mt-2">
-                <p className="text-xs text-base-content/50 mb-1">Balance</p>
-                <Balance address={connectedAddress} />
-              </div>
-            </div>
-          ) : (
-            <div className="text-center text-sm text-base-content/50">
-              <p>Connect wallet to continue</p>
-            </div>
-          )}
-        </div>
-      </aside>
-
+    <div className="flex flex-col min-h-screen bg-base-200">
       {/* Main Content */}
-      <main className="flex-1 p-8 overflow-y-auto">
+      <div className="container mx-auto px-4 py-8">
         <header className="flex justify-between items-center mb-8">
           <div>
             <h2 className="text-3xl font-bold text-base-content">Payment Dashboard</h2>
@@ -374,7 +323,7 @@ const Home: NextPage = () => {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 };
